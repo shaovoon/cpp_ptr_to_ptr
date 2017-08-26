@@ -82,12 +82,33 @@ int* func_ret_ptr()
 	return &g_n;
 }
 
+ // return ref
+void example_ret_ref()
+{
+	int n = 23;
+	int* pn = &n;
+
+	std::cout << "example_ret_ref()" << std::endl;
+
+	std::cout << "Before :" << *pn << std::endl; // display 23
+
+	pn = &func_ret_ref();
+
+	std::cout << "After :" << *pn << std::endl; // display 42
+}
+
+int& func_ret_ref()
+{
+	return g_n;
+}
+
 int main()
 {
 	example_ptr();
 	example_ptr_to_ptr();
 	example_ref_to_ptr();
 	example_ret_ptr();
+	example_ret_ref();
 
     return 0;
 }
